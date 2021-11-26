@@ -1,52 +1,13 @@
-# Introdução ao Docker em 22 minutos
+# Acadêmicos
 
-Projeto gerado na videoaula do canal no YouTube Programador a Bordo.
+- [Emília Ferlin](https://br.linkedin.com/in/emilia-ferlin-b254111b1)
+- [Luís Henrique Mistura](https://www.linkedin.com/in/lu%C3%ADs-henrique-mistura-da-silva-35a9051b2/)
+- [Arthur Monteiro Tibolla](https://www.linkedin.com/in/arthur-monteiro-tibolla-b10242186/)
 
-Link da aula:
-https://www.youtube.com/watch?v=Kzcz-EVKBEQ
+## Projeto
 
-## Como rodar
+Projeto docker básico com container com mysql image para banco de dados, container com php image (7.2-apache) para bakcend e node image (10-slim) para front. O projeto foi desenvolvido primeiramente em docker com inicialização individual dos containers e posteriormente foi implementado o docker compose para inicialização mais rápida.
 
-### Instalando dependências
-Acesse a pasta `./api` no terminal e execute:
-```
-npm install
-```
+## Objetivo
 
-Com isso instalamos as dependências Node que precisamos. Estou utilizando Node 10.
-
-### Construindo as imagens
-
-Acesse a pasta raíz do projeto e construa cada imagem (MySQL, Node API e PHP):
-
-```
-docker build -t mysql-image -f api/db/Dockerfile .
-```
-```
-docker build -t node-image -f api/Dockerfile .
-```
-```
-docker build -t php-image -f website/Dockerfile .
-```
-
-### Rodando os containers
-Na pasta raíz do projeto, execute um de cada vez:
-
-```
-docker run -d -v $(pwd)/api/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
-```
-```
-
-docker run -d -v $(pwd)/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
-```
-```
-docker run -d -v "$(pwd)/website":/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
-```
-
-### Agora faça o restore do banco:
-```
-docker exec -i mysql-container mysql -uroot -pprogramadorabordo < api/db/script.sql
-```
-
-
-Para entender melhor sobre cada comando utilizado, assita a videoaula ;)
+Projeto realizado para obtenção de nota final parcial na discplina de Sistemas Operacionais ministrada pelo docente Fernando Pôsser Pinheiro da faculdade IMED - Passo Fundo
